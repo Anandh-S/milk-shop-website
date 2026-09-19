@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thanni Paal Dairy — Features</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #f3f5ee;
+    --surface: #ffffff;
+    --ink: #1c2b1e;
+    --ink-soft: #52604f;
+    --pasture: #3d6b4f;
+    --pasture-deep: #2a4b37;
+    --cream-gold: #c99a2e;
+    --line: #d9ddcd;
+    --milk: #fbfbf6;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%;display:block;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:20;
+    background:rgba(243,245,238,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;max-width:1120px;margin:0 auto;}
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Fraunces', serif;font-size:20px;font-weight:600;color:var(--pasture-deep);}
+  .brand svg{width:28px;height:28px;}
+  nav ul{display:flex;gap:32px;list-style:none;margin:0;padding:0;font-size:15px;}
+  nav a{color:var(--ink-soft);text-decoration:none;transition:color .2s;}
+  nav a:hover{color:var(--pasture-deep);}
+  .nav-cta{background:var(--pasture);color:#fff;padding:9px 18px;border-radius:4px;font-size:14px;text-decoration:none;}
+  .nav-links{display:flex;align-items:center;gap:32px;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:90px 0 70px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:64px;align-items:center;}
+  .eyebrow{color:var(--cream-gold);font-size:14px;letter-spacing:.02em;margin:0 0 18px;font-weight:600;}
+  h1{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:56px;
+    line-height:1.08;
+    letter-spacing:-0.01em;
+    margin:0 0 22px;
+    color:var(--pasture-deep);
+    max-width:11ch;
+  }
+  .hero p.lead{
+    font-size:18px;
+    color:var(--ink-soft);
+    max-width:42ch;
+    margin:0 0 30px;
+  }
+  .hero-actions{display:flex;gap:16px;flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--pasture-deep);color:#fff;padding:14px 26px;border-radius:4px;
+    text-decoration:none;font-size:15px;font-weight:500;display:inline-block;
+    transition:background .2s;
+  }
+  .btn-primary:hover{background:var(--pasture);}
+  .btn-secondary{
+    color:var(--pasture-deep);padding:14px 8px;text-decoration:none;font-size:15px;font-weight:500;
+    border-bottom:1px solid var(--pasture-deep);
+  }
+  .hero-art{position:relative;}
+  .hero-stats{
+    display:flex;gap:28px;margin-top:44px;padding-top:28px;border-top:1px solid var(--line);
+  }
+  .stat b{display:block;font-family:'Fraunces', serif;font-size:30px;color:var(--pasture-deep);font-weight:600;}
+  .stat span{font-size:13px;color:var(--ink-soft);}
+
+  /* ---------- SECTION HEADS ---------- */
+  .section{padding:88px 0;}
+  .section-head{max-width:56ch;margin-bottom:56px;}
+  .section-head h2{
+    font-family:'Fraunces', serif;font-weight:500;font-size:36px;color:var(--pasture-deep);margin:0 0 14px;line-height:1.15;
+  }
+  .section-head p{color:var(--ink-soft);font-size:16px;margin:0;max-width:48ch;}
+
+  /* ---------- FEATURES: asymmetric layout ---------- */
+  .features{border-top:1px solid var(--line);background:var(--milk);}
+  .feature-row{
+    display:grid;
+    grid-template-columns:0.9fr 1.4fr;
+    gap:56px;
+    padding:44px 0;
+    border-bottom:1px solid var(--line);
+    align-items:start;
+  }
+  .feature-row:last-child{border-bottom:none;}
+  .feature-num{
+    font-family:'Fraunces', serif;font-size:15px;color:var(--cream-gold);font-weight:600;
+  }
+  .feature-title{
+    font-family:'Fraunces', serif;font-size:26px;color:var(--pasture-deep);margin:8px 0 0;font-weight:500;
+  }
+  .feature-detail p{color:var(--ink-soft);font-size:16px;margin:0 0 14px;max-width:52ch;}
+  .feature-tags{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;}
+  .feature-tags span{
+    background:#fff;border:1px solid var(--line);color:var(--ink-soft);
+    font-size:13px;padding:6px 12px;border-radius:20px;
+  }
+
+  /* ---------- PRODUCT STRIP ---------- */
+  .products{padding:88px 0;}
+  .product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line);border-radius:6px;overflow:hidden;}
+  .product-card{background:var(--surface);padding:34px 28px;}
+  .product-card h3{font-family:'Fraunces', serif;font-size:20px;color:var(--pasture-deep);margin:14px 0 8px;font-weight:500;}
+  .product-card p{color:var(--ink-soft);font-size:14.5px;margin:0;}
+  .product-icon{width:40px;height:40px;color:var(--pasture);}
+
+  /* ---------- TIMELINE (delivery day) ---------- */
+  .timeline{background:var(--pasture-deep);color:#f3f5ee;padding:88px 0;}
+  .timeline .section-head h2, .timeline .section-head p{color:#f3f5ee;}
+  .timeline .section-head p{color:#cfe0d3;}
+  .tline{position:relative;padding-left:0;}
+  .tstep{display:grid;grid-template-columns:110px 1fr;gap:24px;padding:26px 0;border-top:1px solid rgba(255,255,255,0.14);}
+  .tstep:first-child{border-top:none;}
+  .ttime{font-family:'Fraunces', serif;font-size:16px;color:var(--cream-gold);}
+  .tcontent h4{margin:0 0 6px;font-size:17px;font-weight:600;}
+  .tcontent p{margin:0;color:#cfe0d3;font-size:15px;max-width:60ch;}
+
+  /* ---------- CTA ---------- */
+  .cta{padding:100px 0;text-align:center;}
+  .cta h2{font-family:'Fraunces', serif;font-size:38px;color:var(--pasture-deep);margin:0 0 16px;font-weight:500;}
+  .cta p{color:var(--ink-soft);font-size:17px;margin:0 0 32px;}
+
+  footer{border-top:1px solid var(--line);padding:36px 0;}
+  .foot-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+  footer p{color:var(--ink-soft);font-size:13.5px;margin:0;}
+
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr;}
+    h1{font-size:40px;max-width:none;}
+    .feature-row{grid-template-columns:1fr;gap:14px;}
+    .product-grid{grid-template-columns:1fr;}
+    .tstep{grid-template-columns:1fr;}
+    nav ul{display:none;}
+  }
+
+  :focus-visible{outline:2px solid var(--cream-gold);outline-offset:2px;}
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="brand">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M9 2H15V5.5L17 8.5V21C17 21.5523 16.5523 22 16 22H8C7.44772 22 7 21.5523 7 21V8.5L9 5.5V2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+        <line x1="7" y1="13" x2="17" y2="13" stroke="currentColor" stroke-width="1.6"/>
+      </svg>
+      Thanni Paal Dairy
+    </div>
+    <div class="nav-links">
+      <ul>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#day">Delivery day</a></li>
+      </ul>
+      <a class="nav-cta" href="#cta">Get started</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">A local dairy, run properly</p>
+      <h1>What our milk shop actually gives you</h1>
+      <p class="lead">No middlemen, no additives, no guessing. Here's exactly what you get when you order from us — from the farm gate to your doorstep.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="#features">See the features</a>
+        <a class="btn-secondary" href="#products">View products</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><b>4 hrs</b><span>farm to door</span></div>
+        <div class="stat"><b>0</b><span>preservatives added</span></div>
+        <div class="stat"><b>6 AM</b><span>daily delivery</span></div>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg viewBox="0 0 360 420" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <ellipse cx="180" cy="400" rx="130" ry="14" fill="#dfe4d3"/>
+        <path d="M130 60 L230 60 L245 95 L245 370 C245 385 235 395 220 395 L140 395 C125 395 115 385 115 370 L115 95 Z" fill="#ffffff" stroke="#2a4b37" stroke-width="2.5"/>
+        <path d="M130 60 L230 60 L235 40 L125 40 Z" fill="#e9ede0" stroke="#2a4b37" stroke-width="2.5"/>
+        <rect x="125" y="40" width="110" height="18" rx="3" fill="#c99a2e" stroke="#2a4b37" stroke-width="2"/>
+        <rect x="118" y="180" width="127" height="130" fill="#3d6b4f"/>
+        <text x="180" y="160" text-anchor="middle" font-family="Fraunces, serif" font-size="17" fill="#2a4b37" font-weight="600">FRESH</text>
+        <text x="180" y="248" text-anchor="middle" font-family="Fraunces, serif" font-size="15" fill="#ffffff" font-weight="500">Thanni Paal</text>
+        <text x="180" y="268" text-anchor="middle" font-family="Work Sans, sans-serif" font-size="11" fill="#e9ede0">Whole Milk · 500ml</text>
+        <circle cx="180" cy="18" r="14" fill="#c99a2e" stroke="#2a4b37" stroke-width="2"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="features" id="features">
+  <div class="wrap" style="padding-top:80px;">
+    <div class="section-head">
+      <h2>Six things we do differently</h2>
+      <p>Each one exists because a regular milk shop usually skips it. This is the actual list, not marketing filler.</p>
+    </div>
+
+    <div class="feature-row">
+      <div><span class="feature-num">01</span><h3 class="feature-title">Sourced from one farm cluster</h3></div>
+      <div class="feature-detail">
+        <p>All milk comes from a fixed group of small farms within 15 km, not a mixed tanker supply. You can ask which farm supplied today's batch and get a real answer.</p>
+        <div class="feature-tags"><span>Traceable source</span><span>Local farms only</span></div>
+      </div>
+    </div>
+
+    <div class="feature-row">
+      <div><span class="feature-num">02</span><h3 class="feature-title">Tested before it leaves the dairy</h3></div>
+      <div class="feature-detail">
+        <p>Every batch is checked for fat content, adulteration, and bacterial load before packing. Results are logged, not just eyeballed by a supervisor.</p>
+        <div class="feature-tags"><span>Fat % check</span><span>Adulteration test</span><span>Daily log</span></div>
+      </div>
+    </div>
+
+    <div class="feature-row">
+      <div><span class="feature-num">03</span><h3 class="feature-title">Delivered within four hours of milking</h3></div>
+      <div class="feature-detail">
+        <p>Cows are milked around 2 AM, and delivery runs finish by 6:30 AM. Nothing sits in a tank overnight waiting for a bigger batch.</p>
+        <div class="feature-tags"><span>Same-day milking</span><span>Cold chain kept</span></div>
+      </div>
+    </div>
+
+    <div class="feature-row">
+      <div><span class="feature-num">04</span><h3 class="feature-title">Subscriptions you can actually change</h3></div>
+      <div class="feature-detail">
+        <p>Pause for a travel week, skip a single day, or bump quantity for a festival — all from a two-minute call or message, adjusted before the next delivery cycle.</p>
+        <div class="feature-tags"><span>Pause anytime</span><span>Change quantity</span></div>
+      </div>
+    </div>
+
+    <div class="feature-row">
+      <div><span class="feature-num">05</span><h3 class="feature-title">Returnable glass and steel containers</h3></div>
+      <div class="feature-detail">
+        <p>Milk is delivered in reusable glass bottles or steel cans that are collected, washed, and reused, instead of a fresh plastic packet every single day.</p>
+        <div class="feature-tags"><span>Reusable bottles</span><span>Less plastic waste</span></div>
+      </div>
+    </div>
+
+    <div class="feature-row">
+      <div><span class="feature-num">06</span><h3 class="feature-title">One number, one person, real answers</h3></div>
+      <div class="feature-detail">
+        <p>A single phone line goes to someone who actually knows the delivery schedule and farm rotation, not a call centre reading a script.</p>
+        <div class="feature-tags"><span>Direct contact</span><span>No call centre</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="products" id="products">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>What's in the crate</h2>
+      <p>A short, deliberately small product list — everything on it is something we make well, not everything we could sell.</p>
+    </div>
+    <div class="product-grid">
+      <div class="product-card">
+        <svg class="product-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 2H15V5L17 8V21C17 21.5 16.5 22 16 22H8C7.5 22 7 21.5 7 21V8L9 5V2Z" stroke="currentColor" stroke-width="1.6"/></svg>
+        <h3>Whole milk</h3>
+        <p>Full-fat, unhomogenised, delivered in 500ml and 1L glass bottles.</p>
+      </div>
+      <div class="product-card">
+        <svg class="product-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.6"/><path d="M8 13c1 2 2 3 4 3s3-1 4-3" stroke="currentColor" stroke-width="1.6"/></svg>
+        <h3>Fresh curd</h3>
+        <p>Set daily from the morning batch, sold by weight in reusable tubs.</p>
+      </div>
+      <div class="product-card">
+        <svg class="product-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="9" width="16" height="10" rx="1" stroke="currentColor" stroke-width="1.6"/><path d="M8 9V6a4 4 0 018 0v3" stroke="currentColor" stroke-width="1.6"/></svg>
+        <h3>A2 ghee</h3>
+        <p>Slow-churned in small batches from indigenous cattle breeds only.</p>
+      </div>
+      <div class="product-card">
+        <svg class="product-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3v6M9 6h6" stroke="currentColor" stroke-width="1.6"/><path d="M6 10h12l-1.5 10a2 2 0 01-2 1.7H9.5a2 2 0 01-2-1.7L6 10z" stroke="currentColor" stroke-width="1.6"/></svg>
+        <h3>Paneer</h3>
+        <p>Made to order on weekends, so it's never sitting in a fridge for days.</p>
+      </div>
+      <div class="product-card">
+        <svg class="product-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 12c0-4 3.5-8 8-8s8 4 8 8-3.5 8-8 8-8-4-8-8z" stroke="currentColor" stroke-width="1.6"/><path d="M9 12c0-2 1.5-4 3-4s3 2 3 4-1.5 4-3 4-3-2-3-4z" stroke="currentColor" stroke-width="1.6"/></svg>
+        <h3>Buttermilk</h3>
+        <p>Lightly spiced or plain, bottled fresh — no added water thickeners.</p>
+      </div>
+      <div class="product-card">
+        <svg class="product-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="5" y="4" width="14" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M9 9h6M9 13h6M9 17h3" stroke="currentColor" stroke-width="1.6"/></svg>
+        <h3>Custom crates</h3>
+        <p>Mix products across the week — curd on some days, ghee once a month.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="timeline" id="day">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>A single delivery day</h2>
+      <p>What actually happens between the farm and your doorstep, hour by hour.</p>
+    </div>
+    <div class="tline">
+      <div class="tstep">
+        <div class="ttime">2:00 AM</div>
+        <div class="tcontent"><h4>Milking begins</h4><p>Cows across the farm cluster are milked and the milk is chilled immediately at the collection point.</p></div>
+      </div>
+      <div class="tstep">
+        <div class="ttime">3:15 AM</div>
+        <div class="tcontent"><h4>Collected and tested</h4><p>Cans reach the dairy, where fat content and quality checks happen before anything is packed.</p></div>
+      </div>
+      <div class="tstep">
+        <div class="ttime">4:00 AM</div>
+        <div class="tcontent"><h4>Packed into bottles and cans</h4><p>Orders are filled into returnable containers according to each subscription's route.</p></div>
+      </div>
+      <div class="tstep">
+        <div class="ttime">5:00 AM</div>
+        <div class="tcontent"><h4>Delivery routes leave</h4><p>Each rider carries one street's worth of orders, so nothing waits long once it's out of cold storage.</p></div>
+      </div>
+      <div class="tstep">
+        <div class="ttime">6:30 AM</div>
+        <div class="tcontent"><h4>At your door</h4><p>Last bottle delivered, and yesterday's empties are collected on the same round.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="cta">
+  <div class="wrap">
+    <h2>That's the whole list</h2>
+    <p>No loyalty points, no upsells — just what the shop does and how it does it.</p>
+    <a class="btn-primary" href="#features">Back to features</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-row">
+    <p>Thanni Paal Dairy — a small local milk shop.</p>
+    <p>Built as a learning project.</p>
+  </div>
+</footer>
+
+</body>
+</html>
